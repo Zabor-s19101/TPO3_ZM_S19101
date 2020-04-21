@@ -5,6 +5,7 @@
 package zad1;
 
 
+import java.text.DecimalFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -33,7 +34,7 @@ public class Time {
                         .append(dateTimeTo.format(DateTimeFormatter.ofPattern(tPat))).append("\n - mija: ")
                         .append(daysBetween)
                         .append(daysBetween == 1 ? " dzień, tygodni " : " dni, tygodni ")
-                        .append(String.format(new Locale("xx"), "%.2f", daysBetween / 7.0)).append("\n - godzin: ")
+                        .append(new DecimalFormat("#.##").format(daysBetween / 7.0).replace(",", ".")).append("\n - godzin: ")
                         .append(hoursBetween)
                         .append(", minut: ")
                         .append(minutesBetween).append("\n");
@@ -52,7 +53,7 @@ public class Time {
                         .append(dateTo.format(DateTimeFormatter.ofPattern(dPat))).append("\n - mija: ")
                         .append(daysBetween)
                         .append(daysBetween == 1 ? " dzień, tygodni " : " dni, tygodni ")
-                        .append(String.format(new Locale("xx"), "%.2f", daysBetween / 7.0)).append("\n");
+                        .append(new DecimalFormat("#.##").format(daysBetween / 7.0).replace(",", ".")).append("\n");
                 kaledarzowo(result, yBetween, mBetween, dBetween);
             }
         } catch (DateTimeParseException e) {
